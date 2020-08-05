@@ -1,2 +1,3 @@
 # Algo-Trader
-An Algorithmic Day Trading Bot
+
+### Check it out here ! - [Sreek's Algo Trader](https://sreek-trader.herokuapp.com/).
