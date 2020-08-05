@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algo Trader</title>
+  <link rel="icon" href="%PUBLIC_URL%/icon.png" />
+</head>
+
+<body style="background-color: black;">
+  <div style="min-height: 100vh; min-width: 100vw;" id="net">
+    <div class="App" id="app"></div>
+  </div>
+  <script src="%PUBLIC_URL%/three.r95.min.js"></script>
+  <script src="%PUBLIC_URL%/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+  el: "#net",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x00ff00,
+  backgroundColor: 0x0,
+  points: 20.00,
+  maxDistance: 30.00,
+  spacing: 20.00,
+  showDots: false
+})
+  </script>
+</body>
+
+</html>
