@@ -19,8 +19,8 @@ class App extends React.Component {
 
   componentDidMount() {
     const alpaca = new Alpaca({
-      keyId: 'PKV5TEY0P817CP5HO20Z',
-      secretKey: 'UMfrjT/Lxj/LiyyP3I735sMEuQ8hIPli3HtrbO1a',
+      keyId: '???',
+      secretKey: '???',
       paper: true,
       usePolygon: false
     })
