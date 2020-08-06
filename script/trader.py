@@ -16,6 +16,7 @@ positions = {}
 
 cash = 0
 
+market_open = alpaca.get_clock().is_open
 
 def load():
     global cash, stocklist, positions
@@ -34,7 +35,7 @@ def buy():
     buying = {}
 
     for ticker in stocklist - positions.keys():
-        indicators = finnhub.aggregate_indicator(ticker, 'D')
+        indicators = finnhub.aggregate_indicator(ticker, '60')
         signal = indicators['technicalAnalysis']['signal']
         trending = indicators['trend']['trending']
         if (signal in ('buy', 'strong buy')) and trending:
@@ -55,33 +56,34 @@ def sell():
     global cash, stocklist, positions
 
     for ticker in positions.keys():
-        indicators = finnhub.aggregate_indicator(ticker, 'D')
+        indicators = finnhub.aggregate_indicator(ticker, '60')
         signal = indicators['technicalAnalysis']['signal']
         if signal in ('neutral', 'sell', 'strong sell'):
             alpaca.submit_order(symbol=ticker, side='sell', type='market', qty=positions[ticker], time_in_force='day')
         time.sleep(1)
 
+if(market_open):
+    load()
 
-load()
+    print(cash)
+    print(positions)
 
-print(cash)
-print(positions)
+    sell()
 
-sell()
+    load()
 
-load()
+    print(cash)
+    print(positions)
 
-print(cash)
-print(positions)
+    buy()
 
-buy()
+    load()
 
-load()
+    print(cash)
+    print(positions)
 
-print(cash)
-print(positions)
+    print()
 
-print()
-
-
-print(time.time() - start_time, 's')
+    print(time.time() - start_time, 's')
+else:
+    raise SystemExit(1)
